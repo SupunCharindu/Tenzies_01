@@ -25,8 +25,13 @@ main {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+}
+
+button {
+    font-family: Karla, sans-serif;
+    cursor: pointer;
 }
 
 .die-container {
@@ -46,4 +51,14 @@ main {
   border: none;
   background-color: white;
   font-weight: bold;
+}
+
+button.roll-dice {
+  height: 60px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  background-color: #5035ff;
+  color: white;
+  font-size: 1.2rem;
 }
