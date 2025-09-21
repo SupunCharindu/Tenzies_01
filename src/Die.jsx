@@ -4,7 +4,9 @@ export default function Die(props) {
   };
   // Render a button showing the die value
   return (
-  <button style={styles}>
+  <button 
+    style={styles}
+    onClick={props.hold}>
     {props.value}
     </button>);
 }
