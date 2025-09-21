@@ -10,7 +10,7 @@ export default function App() {
   function GenerateAllNewDice() {
     return new Array(10).fill(0).map(() => ({
       value: Math.ceil(Math.random() * 6),
-      isHeld: false,
+      isHeld: true,
       id: nanoid(),
     }));
   }
@@ -21,9 +21,12 @@ export default function App() {
   }
 
   // Map each die value to a Die component
-  const diceElement = dice.map((dieObj) => (
-    <Die key={dieObj.id} value={dieObj.value} />
-  ));
+  const diceElement = dice.map(dieObj => 
+    <Die 
+    key={dieObj.id} 
+    isHeld={dieObj.isHeld} 
+    value={dieObj.value} />
+  );
   // console.log(dice.map(die => die.id));
 
   return (

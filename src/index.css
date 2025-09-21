@@ -42,7 +42,7 @@ button {
   border-radius: 10px;
 }
 
-.die {
+.die-container button {
   height: 60px;
   width: 60px;
   font-size: 2rem;
