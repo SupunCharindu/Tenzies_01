@@ -37,7 +37,16 @@ export default function App() {
 
   //roll dice button function
   function rollDice() {
-    setDice(GenerateAllNewDice());
+    setDice((prevDice) =>
+      prevDice.map((die) =>
+        die.isHeld
+          ? die
+          : {
+              ...die,
+              value: Math.ceil(Math.random() * 6),
+            }
+      )
+    );
   }
 
   // Map each die value to a Die component
