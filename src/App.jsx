@@ -7,9 +7,25 @@ export default function App() {
   const [dice, setDice] = useState(GenerateAllNewDice);
 
   function hold(id) {
-     console.log(id)
+    //  console.log(id)
+    setDice((prevDice) =>
+      prevDice.map((die) =>
+        die.id === id ? { ...die, isHeld: !die.isHeld } : die
+      )
+    );
+
+    //2nd way to do this toggle
+    // setDice((prevDice) =>
+    //   prevDice.map((die) => {
+    //     if (die.id === id) {
+    //       return { ...die, isHeld: !die.isHeld };
+    //     } else {
+    //       return die;
+    //     }
+    //   })
+    // );
   }
-  
+
   // Generates an array of 10 random numbers between 1 and 6
   function GenerateAllNewDice() {
     return new Array(10).fill(0).map(() => ({
@@ -25,14 +41,14 @@ export default function App() {
   }
 
   // Map each die value to a Die component
-  const diceElement = dice.map(dieObj => 
-    <Die 
-    key={dieObj.id} 
-    isHeld={dieObj.isHeld} 
-    value={dieObj.value} 
-    hold={() => hold(dieObj.id)}
-   />
-  );
+  const diceElement = dice.map((dieObj) => (
+    <Die
+      key={dieObj.id}
+      isHeld={dieObj.isHeld}
+      value={dieObj.value}
+      hold={() => hold(dieObj.id)}
+    />
+  ));
   // console.log(dice.map(die => die.id));
 
   return (
