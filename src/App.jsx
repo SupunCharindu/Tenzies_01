@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Die from "./Die";
 import { nanoid } from "nanoid";
+import ReactConfetti from "react-confetti";
 
 export default function App() {
   // State: array of dice values
@@ -41,16 +42,20 @@ export default function App() {
 
   //roll dice button function
   function rollDice() {
-    setDice((prevDice) =>
-      prevDice.map((die) =>
-        die.isHeld
-          ? die
-          : {
-              ...die,
-              value: Math.ceil(Math.random() * 6),
-            }
-      )
-    );
+    if(!gameWon){
+      setDice((prevDice) =>
+        prevDice.map((die) =>
+          die.isHeld
+            ? die
+            : {
+                ...die,
+                value: Math.ceil(Math.random() * 6),
+              }
+        )
+      );
+    }else{
+      setDice(GenerateAllNewDice)
+    }
   }
 
   // Map each die value to a Die component
@@ -66,6 +71,7 @@ export default function App() {
 
   return (
     <main>
+      {gameWon && <ReactConfetti/>}
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
