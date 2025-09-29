@@ -1,158 +1,125 @@
+/* --- Reset and Base Styles --- */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: repeating-linear-gradient(
-    135deg,
-    #e0c97f 0 40px,
-    #c2a14a 40px 80px
-  );
+  background: #36526e;
+  font-family: "Segoe UI", "Arial", sans-serif;
   padding: 20px;
   min-height: 100vh;
-  font-family: "Courier New", Courier, monospace;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+/* --- Responsive Container --- */
 div#root {
   width: 100%;
   max-width: 600px;
 }
 
+/* --- Main Board --- */
 main {
-  background: url("https://www.transparenttextures.com/patterns/wood-pattern.png"),
-    #e0c97f;
-  border: 6px double #7c5c1e;
+  background: #fff;
+  border: 2px solid #e3e7ed;
   border-radius: 18px;
-  box-shadow: 0 0 0 8px #c2a14a, 0 8px 24px #7c5c1e55;
+  box-shadow: 0 4px 24px #0001;
   padding: 32px 24px 24px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
+/* --- Title --- */
 .title {
-  font-size: 2.5rem;
-  font-family: "Impact", "Arial Black", fantasy, sans-serif;
-  color: #7c5c1e;
-  letter-spacing: 2px;
-  margin: 0 0 8px 0;
-  text-shadow: 2px 2px 0 #fffbe7, 4px 4px 0 #c2a14a;
+  font-size: 2.2rem;
+  font-family: "Segoe UI", "Arial", sans-serif;
+  color: #1976d2;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-shadow: none;
+  text-align: center;
 }
 
-button {
-  font-family: Karla, sans-serif;
-  cursor: pointer;
-}
-
+/* --- Instructions --- */
 .instructions {
-  font-family: "Courier New", Courier, monospace;
   font-size: 1.1rem;
-  color: #7c5c1e;
-  background: #fffbe7;
-  border: 2px dashed #c2a14a;
+  color: #4a5a6a;
+  background: #f4f7fa;
+  border: 1px solid #e3e7ed;
   border-radius: 8px;
   padding: 8px 16px;
   margin-bottom: 18px;
   text-align: center;
 }
 
+/* --- Stats --- */
 .stats,
 .best-stats {
+  color: #2d3a4a;
+  background: #f4f7fa;
+  border: 1px solid #e3e7ed;
+  border-radius: 8px;
+  padding: 6px 0;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
   display: flex;
   gap: 2rem;
   justify-content: center;
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-}
-
-.stats {
-  color: #7c5c1e;
-  background: #e0c97f;
-  border: 2px solid #c2a14a;
-  border-radius: 8px;
-  padding: 6px 0;
-}
-
-.best-stats {
-  color: #7c5c1e;
-  background: #fffbe7;
-  border: 2px dotted #c2a14a;
-  border-radius: 8px;
-  padding: 6px 0;
-  margin-bottom: 18px;
+  flex-wrap: wrap;
 }
 
 .stats strong,
 .best-stats strong {
-  color: #c2a14a;
-  text-shadow: 1px 1px 0 #fffbe7;
+  color: #1976d2;
+  text-shadow: none;
 }
 
+/* --- Dice Container --- */
 .die-container {
-  display: grid;
-  grid-template: auto auto / repeat(5, 1fr);
-  gap: 18px;
-  margin-bottom: 32px;
-  background: repeating-linear-gradient(
-    45deg,
-    #e0c97f 0 10px,
-    #f7e7b3 10px 20px
-  );
-  border: 4px groove #c2a14a;
+  background: #f4f7fa;
+  border: 1px solid #e3e7ed;
   border-radius: 12px;
   padding: 18px;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  width: 100%;
+  max-width: 400px;
 }
 
-.die-container button {
-  height: 50px;
-  width: 50px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  border: none;
-  background-color: white;
-  font-size: 1.75rem;
-  font-weight: bold;
+@media (max-width: 600px) {
+  .die-container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 220px;
+    gap: 12px;
+    padding: 12px;
+  }
+  main {
+    padding: 18px 6px 12px 6px;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
 }
 
-button.roll-dice {
-  height: 60px;
-  padding: 0 40px;
-  border: 4px groove #c2a14a;
-  border-radius: 14px;
-  background: linear-gradient(180deg, #fffbe7 0%, #e0c97f 100%);
-  color: #7c5c1e;
-  font-size: 1.3rem;
-  font-family: "Press Start 2P", "Courier New", Courier, monospace;
-  letter-spacing: 1px;
-  box-shadow: 0 6px 0 #c2a14a, 0 2px 8px #7c5c1e33;
-  margin-top: 8px;
-  margin-bottom: 0;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
-}
-
-button.roll-dice:active {
-  background: #e0c97f;
-  box-shadow: 0 2px 0 #c2a14a;
-  transform: translateY(4px);
-}
-
+/* --- Dice --- */
 .die-face {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fffbe7
-    url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-  border-radius: 12px;
-  border: 4px double #7c5c1e;
-  height: 80px;
-  width: 80px;
-  box-shadow: 0 8px 18px #7c5c1e55, 0 2px 8px #c2a14a99;
+  background: #fff;
+  border-radius: 10px;
+  border: 2px solid #e3e7ed;
+  height: 64px;
+  width: 64px;
+  box-shadow: 0 2px 8px #0001;
   transition: background 0.2s, box-shadow 0.2s;
   outline: none;
   padding: 0;
@@ -160,75 +127,100 @@ button.roll-dice:active {
   overflow: hidden;
 }
 
+@media (max-width: 600px) {
+  .die-face {
+    height: 44px;
+    width: 44px;
+  }
+}
+
+/* --- Dice Hover --- */
+.die-face:hover {
+  box-shadow: 0 0 0 2px #1976d2, 0 2px 8px #0001;
+  background: #e3e7ed;
+}
+
+/* --- Dice Pips --- */
 .pip-grid {
+  width: 44px;
+  height: 44px;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  padding: 6px;
-  width: 60px;
-  height: 60px;
-  gap: 0;
   justify-items: center;
   align-items: center;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .pip-grid {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .pip {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: transparent;
   display: block;
 }
 
 .pip.filled {
-  background: #2b1a00;
-  box-shadow: 0 1px 2px #0006;
+  background: #1976d2;
+  box-shadow: 0 1px 2px #0002;
 }
 
-/* Optional: subtle hover effect */
-.die-face:hover {
-  box-shadow: 0 0 0 4px #c2a14a, 0 2px 8px #7c5c1e33;
-  background: #f7e7b3;
+/* --- Roll Button --- */
+button.roll-dice {
+  height: 48px;
+  padding: 0 32px;
+  border: none;
+  border-radius: 10px;
+  background: #1976d2;
+  color: #fff;
+  font-size: 1.1rem;
+  font-family: "Segoe UI", "Arial", sans-serif;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px #0001;
+  margin-top: 8px;
+  margin-bottom: 0;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
 }
 
-@keyframes roll {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  30% {
-    transform: rotate(20deg) scale(1.2);
-  }
-  60% {
-    transform: rotate(-20deg) scale(0.9);
-  }
-  100% {
-    transform: rotate(0deg) scale(1);
-  }
+button.roll-dice:active {
+  background: #115293;
+  box-shadow: 0 1px 4px #0002;
+  transform: translateY(2px);
 }
 
+/* --- Mute & Help Buttons --- */
 .mute-btn,
 .help-btn {
-  position: absolute;
-  top: 18px;
+  background: #fff;
+  border: 1px solid #e3e7ed;
+  color: #1976d2;
   font-size: 1.5rem;
-  background: #fffbe7;
-  border: 2px solid #c2a14a;
   border-radius: 50%;
   width: 38px;
   height: 38px;
   cursor: pointer;
   z-index: 10;
   margin-right: 8px;
+  position: absolute;
+  top: 18px;
 }
 
 .mute-btn {
   left: 18px;
 }
-
 .help-btn {
   right: 18px;
 }
 
+/* --- Pin Icon --- */
 .pin-icon {
+  color: #1976d2;
   position: absolute;
   top: 6px;
   right: 6px;
@@ -236,6 +228,7 @@ button.roll-dice:active {
   pointer-events: none;
 }
 
+/* --- Modal --- */
 .modal-bg {
   position: fixed;
   inset: 0;
@@ -247,12 +240,13 @@ button.roll-dice:active {
 }
 
 .modal {
-  background: #fffbe7;
-  border: 3px solid #c2a14a;
+  background: #fff;
+  border: 1px solid #e3e7ed;
+  color: #2d3a4a;
   border-radius: 12px;
   padding: 24px 32px;
   max-width: 90vw;
-  box-shadow: 0 4px 24px #7c5c1e55;
+  box-shadow: 0 4px 24px #0001;
   text-align: center;
 }
 
@@ -261,23 +255,24 @@ button.roll-dice:active {
   font-size: 1rem;
   padding: 6px 18px;
   border-radius: 8px;
-  border: 2px solid #c2a14a;
-  background: #e0c97f;
-  color: #7c5c1e;
+  border: none;
+  background: #1976d2;
+  color: #fff;
   cursor: pointer;
 }
 
+/* --- Banner --- */
 .retro-banner {
-  font-family: "Press Start 2P", "Courier New", Courier, monospace;
+  font-family: "Segoe UI", "Arial", sans-serif;
   font-size: 1.2rem;
-  color: #fffbe7;
-  background: #7c5c1e;
-  border: 4px double #c2a14a;
+  color: #fff;
+  background: #1976d2;
+  border: none;
   border-radius: 10px;
   padding: 18px 32px;
   margin-bottom: 18px;
   text-align: center;
-  box-shadow: 0 4px 0 #c2a14a;
+  box-shadow: 0 4px 0 #115293;
   letter-spacing: 2px;
   animation: banner-pop 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
